@@ -24,6 +24,35 @@ and of or of lots of LRA formulas.
 
 I may stare at it for a while, later.
 
+----
+
+I have added two assertions of negations of atomic formulas that appear
+at the beginning of the first two asserts, and see a significant slowdown.
+I added the negation of the first atomic formula in the third assert, and it
+speeded up a bit (!).  Maybe this is random (like scrambling), I don't know.
+
+-- original problme
+cvc5 NoriSimp.smt2  158.53s user 2.42s system 98% cpu 2:43.58 total
+(base) dill@Davids-MacBook-Pro-3 SMTExamples % time cvc5 NoriSimp.smt2
+time cvc5 NoriSimp.smt2
+unsat
+-- with negated first atomic formula
+cvc5 NoriSimp.smt2  204.26s user 2.27s system 99% cpu 3:27.94 total
+(base) dill@Davids-MacBook-Pro-3 SMTExamples % time cvc5 NoriSimp.smt2
+time cvc5 NoriSimp.smt2
+unsat
+-- with negated first atomic formula from second assertion
+cvc5 NoriSimp.smt2  284.26s user 3.59s system 98% cpu 4:51.36 total
+(base) dill@Davids-MacBook-Pro-3 SMTExamples % time cvc5 NoriSimp.smt2
+time cvc5 NoriSimp.smt2
+unsat
+-- with negated first atomic formula from third assertion
+-- I then removed it.
+cvc5 NoriSimp.smt2  263.61s user 3.07s system 98% cpu 4:30.25 total
+(base) dill@Davids-MacBook-Pro-3 SMTExamples % time cvc5 NoriSimp.smt2
+time cvc5 NoriSimp.smt2
+unsat
+
 
 
 
